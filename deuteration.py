@@ -4,6 +4,7 @@ import csv
 import pdb2DF 
 from itertools import groupby, islice
 import re 
+pd.options.mode.chained_assignment = None
 
 # Table of 20 amino acids and the number of exchangeable hydrogens in each
 H_ex = pd.read_csv('H_D_ex.txt', sep = '\t',header = 0)
@@ -49,7 +50,7 @@ if is_anti == 1:
     # Create a new column which combines amino acid with its sequence number
     clean_DF["AA_seq"] = clean_DF["AA_NAME"] +'_'+clean_DF["CHAIN"]+'_'+ clean_DF["AA_NR"].astype(str)
 
-else:
+elif is_anti == 2:
     # Create a new column which combines amino acid with its sequence number
     clean_DF["AA_seq"] = clean_DF["AA_NAME"] +'_'+ clean_DF["AA_NR"].astype(str)
 
@@ -239,14 +240,3 @@ for line in end:
 # Close input and output files
 pdb_file.close()
 pdb_out.close()
-
-
-
-
-
-
-
-
-
-
-
